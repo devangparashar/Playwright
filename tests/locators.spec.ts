@@ -56,14 +56,21 @@ test('login test', async() =>{
 
 
   //6. Data-test-id
-  
-  
+   const title1:Locator=  await page.getByTestId('macbook');
+   // or await.page.locator("[data-test-id=username]").fill("dev"); use any but this old way 
+   const title = await header.isEnabled();
+  console.log(title);
+
+  // 7. getByRole 
+  await expect(page.getByRole('heading', { name:'Register Account' })).toBeVisible();
+  await expect(page.getByRole('link',{name:'Forgotten Password'})).toBeVisible();
+  await expect(page.getByRole('radio',{name:'Yes'})).toBeVisible();
+  await page.getByRole('radio',{name:'Yes'}).click();
+  await page.getByRole('checkbox').click();
+  //await page.waitForTimeout(3000);
+  await page.getByRole('button',{name:'Continue'}).click();
 
    await new Promise(() => {}); //prevents your script from exisitng 
-
-   //
-
-
 
 })
 
